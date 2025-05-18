@@ -89,72 +89,87 @@ export default function UpdateProfilePage() {
     }
 
     return (
-        <div className="flex flex-col  min-h-screen py-2">
-            <div className="flex flex-col py-8 px-5 w-full ">
-                {
-                    user && (   
-                        <h1>@<span>{user.username}</span></h1>
-                    )
-                }
-                
-                <h1 className="mb-10 text-3xl font-semibold">{loading ? "Updating" : "Update Details"}</h1>
-                <form onSubmit={handleSubmit(onSubmit)} >
-                                        {/* Full Name */}
-                    <div className="flex flex-col mb-2">
-                        <label>Full Name</label>
-                        <input type="text" {...register("fullName")}   />
-                        <p style={{ color: "red" }}>{errors.fullName?.message}</p>
-                    </div>
-                    
-                    <div className="flex flex-col mb-2">
-                        <label>Age</label>
-                        <input type="Number" {...register("age")} />
-                        <p style={{ color: "red" }}>{errors.fullName?.message}</p>
-                    </div>
-
-                    {/* Gender */}
-                    <div className="flex flex-col mb-2">
-                        <label>Gender</label>
-                        <select {...register("gender")}>
-                        <option value="">Select gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                        </select>
-                        <p style={{ color: "red" }}>{errors.gender?.message}</p>
-                    </div>
-
-                    {/* Bio */}
-                    <div className="flex flex-col mb-2">
-                        <label>Bio</label>
-                        <textarea {...register("bio")} rows={3} />
-                        <p style={{ color: "red" }}>{errors.bio?.message}</p>
-                    </div>
-                    
-                    <div className="flex flex-col mb-2">
-                        <label>City</label>
-                        <input {...register("city")} />
-                        <p style={{ color: "red" }}>{errors.city?.message}</p>
-                    </div>
-                    
-                    <div className="flex flex-col mb-2">
-                        <label>Country</label>
-                        <input {...register("country")} />
-                        <p style={{ color: "red" }}>{errors.country?.message}</p>
-                    </div>
-
-                    <div className="flex flex-col mb-2">
-                        <label>Phone Nunber</label>
-                        <input {...register("phoneNumber")} />
-                        <p style={{ color: "red" }}>{errors.phoneNumber?.message}</p>
-                    </div>
-
-                    <button type="submit" style={{ marginTop: 20 }}>
-                        Submit
-                    </button>
-                    </form>
-                {/* <Link href="/login">Sign here</Link> */}
+        <div className="flex flex-col min-h-screen w-screen">
+            <div className="flex flex-row py-2 px-8 justify-start w-full shadow-xl">
+                <Link href="/profile" className="text-lg text-black underline cursor-pointer">
+                        Back
+                </Link>
             </div>
+            <div className="flex flex-col py-10 px-20 w-full">
+                <div className="flex flex-col gap-3 m-auto items-start p-8 w-full sm:min-w-96 rounded-xl text-zinc-900 text-sm shadow-lg">
+                <h1 className="font-semibold text-3xl mb-5">{loading ? "Updating" : "Update Details"}</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-4">
+                                                {/* Full Name */}
+                            <div className="flex flex-col mb-2">
+                                <label>Full Name</label>
+                                <input type="text" {...register("fullName")}
+                                placeholder="Full Name"
+                                className="border border-zinc-300 rounded w-72 p-2 mt-1 outline-none"  />
+                                <p className="font-sm text-red-600 mb-1">{errors.fullName?.message}</p>
+                            </div>
+                            
+                            <div className="flex flex-col mb-2">
+                                <label>Age</label>
+                                <input type="Number" {...register("age")}
+                                placeholder="Age"
+                                className="border border-zinc-300 rounded w-72 p-2 mt-1 outline-none" />
+                                <p className="font-sm text-red-600 mb-1">{errors.fullName?.message}</p>
+                            </div>
+
+                            {/* Gender */}
+                            <div className="flex flex-col mb-2">
+                                <label>Gender</label>
+                                <select {...register("gender")}
+                                className="border border-zinc-300 rounded w-72 p-2 mt-1 outline-none">
+                                <option value="">Select gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                                </select>
+                                <p className="font-sm text-red-600 mb-1">{errors.gender?.message}</p>
+                            </div>
+
+                            {/* Bio */}
+                            <div className="flex flex-col mb-2">
+                                <label>Bio</label>
+                                <textarea {...register("bio")} rows={3} placeholder="Bio"
+                                className="border border-zinc-300 rounded w-72 p-2 mt-1 outline-none resize-none" />
+                                <p className="font-sm text-red-600 mb-1">{errors.bio?.message}</p>
+                            </div>
+                            
+                            <div className="flex flex-col mb-2">
+                                <label>City</label>
+                                <input {...register("city")} placeholder="City"
+                                className="border border-zinc-300 rounded w-72 p-2 mt-1 outline-none" />
+                                <p className="font-sm text-red-600 mb-1">{errors.city?.message}</p>
+                            </div>
+                            
+                            <div className="flex flex-col mb-2">
+                                <label>Country</label>
+                                <input {...register("country")} placeholder="Country"
+                                className="border border-zinc-300 rounded w-72 p-2 mt-1 outline-none"/>
+                                <p className="font-sm text-red-600 mb-1">{errors.country?.message}</p>
+                            </div>
+
+                            <div className="flex flex-col mb-2">
+                                <label>Phone Nunber</label>
+                                <input {...register("phoneNumber")} placeholder="Phone Number"
+                                className="border border-zinc-300 rounded w-72 p-2 mt-1 outline-none" />
+                                <p className="font-sm text-red-600 mb-1">{errors.phoneNumber?.message}</p>
+                            </div>
+
+                            <div>
+                                <button 
+                                    type="submit"
+                                    disabled={loading}
+                                    className="rounded-full bg-blue-600 text-white px-5 py-3 cursor-pointer shadow-md">
+                                    Submit
+                                </button>
+                            </div>
+                            </form>
+                    </div>
+            </div>
+            
         </div>
         
     )

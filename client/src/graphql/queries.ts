@@ -10,7 +10,16 @@ export const GET_ME = gql`
       age
       bio
       gender
-      
+      city
+      country
+      phoneNumber
     }
   }
 `;
+
+export const LOGOUT = gql`
+  mutation Logout {
+    logout
+  }
+`;
+

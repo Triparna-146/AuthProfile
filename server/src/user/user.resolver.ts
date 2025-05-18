@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
+import { Resolver, Mutation, Args, Query, Context } from '@nestjs/graphql';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 // import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
@@ -19,6 +19,13 @@ export class UserResolver {
   ): Promise<User | null> {
     return this.userService.updateUser(user._id, updateUserInput);
   }
+
+  @Mutation(() => Boolean)
+  logout(@Context() context): boolean {
+    context.res.clearCookie('token'); // Replace 'token' with your actual cookie name
+    return true;
+  }
+
 
   @Query(() => User)
   @UseGuards(JwtAuthGuard)

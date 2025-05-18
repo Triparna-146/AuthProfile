@@ -73,47 +73,58 @@ export default function LoginPage() {
   if (loadingUser || data?.me) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="mb-10 text-3xl font-semibold">
-        {loading ? "Processing..." : "Login"}
-      </h1>
+    !loading ? (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 rounded-xl text-zinc-900 text-sm shadow-lg">
+          <h1 className="font-semibold text-2xl mb-5">
+            {loading ? "Processing..." : "Login"}
+          </h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm space-y-4">
-        <div>
-          <input
-            type="email"
-            placeholder="Email"
-            {...register("email")}
-            className="w-full p-2 border"
-          />
-          <p className="text-red-500 text-sm">{errors.email?.message}</p>
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-4">
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                placeholder="Email"
+                {...register("email")}
+                className="border border-zinc-300 rounded w-full p-2 mt-1 outline-none"
+              />
+              <p className="font-sm text-red-600 mb-1">{errors.email?.message}</p>
+            </div>
+
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                {...register("password")}
+                className="border border-zinc-300 rounded w-full p-2 mt-1 outline-none"
+              />
+              <p className="font-sm text-red-600 mb-1">{errors.password?.message}</p>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="bg-blue-600 text-white w-full py-2 rounded-md text-base"
+            >
+              Login
+            </button>
+          </form>
+
+          <p className="mt-4">
+            Don't have an account?{" "}
+            <Link href="/signup" className="text-blue-600 underline cursor-pointer">
+              Sign up
+            </Link>
+          </p>
         </div>
-
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            {...register("password")}
-            className="w-full p-2 border"
-          />
-          <p className="text-red-500 text-sm">{errors.password?.message}</p>
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full p-2 bg-blue-600 text-white"
-        >
-          Login
-        </button>
-      </form>
-
-      <p className="mt-4">
-        Don't have an account?{" "}
-        <Link href="/signup" className="text-blue-500 underline">
-          Sign up
-        </Link>
-      </p>
-    </div>
+      </div>
+      
+    ) : (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="font-semibold text-xl text-slate-800">loading...</p>
+      </div>
+    )
   );
 }
