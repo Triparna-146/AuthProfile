@@ -34,7 +34,6 @@ export default function LoginPage() {
     fetchPolicy: "no-cache",
   });
 
-  console.log("Login Data", data);
 
   React.useEffect(() => {
     if (!loadingUser && data?.me) {
@@ -60,7 +59,6 @@ export default function LoginPage() {
         },
       });
 
-      console.log("Login successful:", res);
       toast.success("Login Successful");
       router.push("/profile");
     } catch (error: any) {

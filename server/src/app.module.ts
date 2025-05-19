@@ -27,7 +27,7 @@ import { JwtModule } from '@nestjs/jwt';
       driver: ApolloDriver
     }),
 
-    MongooseModule.forRoot('mongodb://localhost:27017/user-auth'),
+    MongooseModule.forRoot(process.env.MONGODB_URI!),
 
     AuthModule,
 

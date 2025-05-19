@@ -42,7 +42,6 @@ export default function UpdateProfilePage() {
         fetchPolicy: "no-cache",
       });
     
-      console.log("Login Data", data);
     
       React.useEffect(() => {
         if (!loadingUser && !data?.me) {
@@ -78,12 +77,10 @@ export default function UpdateProfilePage() {
                 },
             });
 
-            console.log("Profile Updated", res);
             toast.success("Profile Updated");
             router.push("/profile");
             
         } catch (error: any) {
-            console.log(error);
             toast.error(error.message || "Something went wrong");
         }  
     }

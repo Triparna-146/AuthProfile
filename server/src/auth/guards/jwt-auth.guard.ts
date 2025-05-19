@@ -13,21 +13,16 @@ export class JwtAuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const ctx = GqlExecutionContext.create(context).getContext();
     const token = ctx.req.cookies['token']; 
-    console.log('Token:', token); // Log the token for debugging
     if (!token) {
-      console.log('No token found'); // Log if no token is found
       return false;
     }
 
     try {
-      console.log('Token:', token);
       const payload = await this.jwtService.verify(token, {
       secret: process.env.JWT_SECRET,
   });
-  console.log('Payload:', payload);
 
   const user = await this.userService.findById(payload.userId);
-  console.log('User:', user);
 
   ctx.req.user = user;
   return true;

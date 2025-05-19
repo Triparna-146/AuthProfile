@@ -34,7 +34,6 @@ export default function signupPage() {
         fetchPolicy: "no-cache",
       });
     
-      console.log("Login Data", data);
     
       React.useEffect(() => {
         if (!loadingUser && data?.me) {
@@ -53,14 +52,11 @@ export default function signupPage() {
     const onSubmit = async (data: SignupFormData) => {
         try {
             // setLoading(true);
-            console.log(data)
             const res = await signup({ variables: { signupInput: data } });
-            console.log("Signup Success", res);
             toast.success("Signup Successful");
             router.push("/login");
             
         } catch (error: any) {
-            console.log(error);
             toast.error(error.message || "Something went wrong");
         }    
     }
