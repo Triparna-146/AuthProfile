@@ -5,7 +5,7 @@ import { setContext } from '@apollo/client/link/context';
 import fetch from 'cross-fetch';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: process.env.NEXT_PUBLIC_API_URL,
   fetch,
   credentials: 'include', // very important to send cookies
 });
