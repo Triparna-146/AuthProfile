@@ -19,34 +19,11 @@ A full-stack authentication and user profile management system built with **Next
 
 ## 🛠️ Tech Stack
 
-| Frontend     | Backend   | Database | GraphQL        | Auth       |
-|--------------|-----------|----------|----------------|------------|
+| Frontend     | Backend   | Database | GraphQL                | Auth              |
+|--------------|-----------|----------|------------------------|-------------------|
 | Next.js 14   | NestJS    | MongoDB  | Apollo Client & Server | HTTP-only Cookies |
 
 ---
-
-## 📁 Folder Structure
-
-```
-AuthProfile/
-│
-├── client/                 # Next.js App (App Router)
-│   ├── app/                # Routes (pages like login, profile, update)
-│   ├── components/         # Reusable React components
-│   ├── graphql/            # GraphQL queries/mutations
-│   ├── utils/              # Validation schema (Yup)
-│   └── apollo/             # Apollo Client setup
-│
-├── server/                 # NestJS Backend (GraphQL API)
-│   ├── src/
-│   │   ├── auth/           # Auth Module
-│   │   ├── user/           # User Module
-│   │   ├── graphql/        # GraphQL Schema
-│   │   └── main.ts         # App Entry Point
-│
-├── .env                    # Environment Variables
-└── README.md
-```
 
 ---
 
@@ -75,6 +52,7 @@ NEXT_PUBLIC_API_URL=http://localhost:4000/graphql
 MONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_jwt_secret
 CLIENT_URL=http://localhost:3000
+NODE_ENV=node environment
 ```
 
 ### 3. Install dependencies
@@ -106,25 +84,6 @@ npm run dev
 4. **Logout** clears cookie + Apollo cache
 
 ---
-
-## 📸 Screenshots
-
-Coming soon...
-
----
-
-## 📌 TODO
-
-- [ ] Add social login (Google, GitHub)
-- [ ] Add avatar upload
-- [ ] Add password reset feature
-- [ ] Deploy to Vercel + Render
-
----
-
-## 🌐 Live Demo
-
-> 🚧 Coming soon...
 
 ---
 
