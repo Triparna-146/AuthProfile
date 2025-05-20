@@ -52,7 +52,7 @@ NEXT_PUBLIC_API_URL=http://localhost:4000/graphql
 MONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_jwt_secret
 CLIENT_URL=http://localhost:3000
-NODE_ENV=nodedevelopment
+NODE_ENV=development
 ```
 
 ### 3. Install dependencies
